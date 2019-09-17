@@ -10,23 +10,45 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a href="{{route('index')}}" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item">
-          <a href="{{route('about')}}" class="nav-link">About</a>
-        </li>
+        @auth
+          <li class="nav-item">
+            <a href="{{route('index')}}" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('about')}}" class="nav-link">About</a>
+          </li>
+        @endauth
       </ul>
 
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ml-auto">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-              <a href="{{route('todo.index')}}" class="nav-link">Todos</a>
-          </li>
-          <li class="nav-item">
-              <a href="{{route('todo.create')}}" class="nav-link">New Todo</a>
-          </li>
+          @auth
+            <li class="nav-item">
+                <a href="{{route('todo.index')}}" class="nav-link">Todos</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('todo.create')}}" class="nav-link">New Todo</a>
+            </li>
+            <li style="position: relative;">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  {{ucfirst(Auth::user()->name)}}
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" onclick="document.querySelector('#logout').submit()" style="cursor: pointer;">Logout</a>
+              </div>
+            </li>
+            <form method="POST" id="logout" action="{{route('logout')}}">
+                @csrf
+            </form>
+          @else
+            <li class="nav-item">
+                <a href="{{route('login')}}" class="nav-link">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{route('register')}}" class="nav-link">Register</a>
+            </li>
+          @endauth
         </ul>
       </ul>
     </div>

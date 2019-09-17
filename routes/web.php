@@ -12,11 +12,18 @@
 */
 
 // Default route
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+})->middleware('guest');
 
-Route::get('/', 'PagesController@index')->name('index');
-Route::get('about', 'PagesController@about')->name('about');
 
-Route::resource('todo', 'TodoController');
+Auth::routes();
+
+Route::group(['middleware' => ['auth']], function () {
+  Route::get('home', 'PagesController@index')->name('index');
+  Route::get('about', 'PagesController@about')->name('about');
+
+  Route::resource('todo', 'TodoController');
+});
+
+// Route::get('/home', 'HomeController@index')->name('home');

@@ -17,4 +17,6 @@
 // });
 
 Route::get('/', 'PagesController@index')->name('index');
-Route::get('/about', 'PagesController@about')->name('about');
+Route::get('about', 'PagesController@about')->name('about');
+
+Route::resource('todo', 'TodoController');

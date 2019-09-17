@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Laravel 5.8 Basics | About Page
+Todo App | About Page
 @endsection
 
 @section('content')

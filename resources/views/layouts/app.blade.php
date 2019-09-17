@@ -7,7 +7,7 @@
 
       <link rel="stylesheet" href="{{asset('css/app.css')}}"> {{-- <- bootstrap css --}}
 
-      <title>@yield('title','Laravel 5.8 Basics')</title>
+      <title>@yield('title','Todo App')</title>
   </head>
   <body>
 

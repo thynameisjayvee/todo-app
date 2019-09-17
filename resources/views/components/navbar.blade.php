@@ -20,6 +20,14 @@
 
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+              <a href="{{route('todo.index')}}" class="nav-link">Todos</a>
+          </li>
+          <li class="nav-item">
+              <a href="{{route('todo.create')}}" class="nav-link">New Todo</a>
+          </li>
+        </ul>
       </ul>
     </div>
   </div>
